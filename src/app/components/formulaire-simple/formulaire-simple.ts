@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
+import { Personne } from '../../models/personne';
 
 @Component({
   selector: 'app-formulaire-simple',
@@ -8,11 +9,25 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './formulaire-simple.css',
 })
 export class FormulaireSimpleComponent {
-  nom = 'Doe'
-  // updateNom(value: string) {
-  //   this.nom = value
-  // }
-  // updateNom(event: Event) {
-  //   this.nom = (event.target as HTMLInputElement).value
-  // }
+  personne: Personne = {}
+  personnes: Personne[] = []
+
+  afficher(form: NgForm) {
+    console.log(this.personne);
+    this.personnes.push({ ...this.personne })
+    this.personne = {}
+    form.reset()
+  }
 }
+
+/*
+Dans une balise form, ajouter trois champs
+nom,
+prenom
+age
+et un bouton de soumission
+en cliquant sur le bouron on affiche 
+les données du formulaire dans la console
+sous forme d'objet 
+
+*/
