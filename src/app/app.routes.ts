@@ -9,6 +9,7 @@ import { StagiaireComponent } from './components/stagiaire/stagiaire';
 import { CalculComponent } from './components/calcul/calcul';
 import { TableauComponent } from './components/tableau/tableau';
 import { NotFoundComponent } from './components/not-found/not-found';
+import { FormulaireSimpleComponent } from './components/formulaire-simple/formulaire-simple';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -21,6 +22,7 @@ export const routes: Routes = [
     { path: 'computed', component: ComputedComponent },
     { path: 'calcul/:op', component: CalculComponent },
     { path: 'tableau/:indice', component: TableauComponent },
+    { path: 'formulaire', component: FormulaireSimpleComponent },
     //à placer en dernier
     // { path: '**', component: NotFoundComponent },
     { path: 'not-found', component: NotFoundComponent },

@@ -2,10 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import Stagiaire from '../../classes/stagiaire';
 import { Router, RouterLink } from "@angular/router";
+import { GetCharPipe } from '../../pipes/get-char-pipe';
+import { EvenValuePipe } from '../../pipes/even-value-pipe';
 
 @Component({
   selector: 'app-about',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, GetCharPipe, EvenValuePipe],
   templateUrl: './about.html',
   styleUrl: './about.css',
 })
@@ -33,6 +35,7 @@ export class AboutComponent {
   lastname = "Mitroglou";
   ville = "Toulouse";
   codePostal = "31000";
+  aujourdhui = Date.now();
   constructor(private router: Router) {}
   // méthodes
   afficherBonjour() {
