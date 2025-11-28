@@ -7,6 +7,7 @@ import { AboutComponent } from './components/about/about';
 import { AdresseComponent } from './components/adresse/adresse';
 import { StagiaireComponent } from './components/stagiaire/stagiaire';
 import { CalculComponent } from './components/calcul/calcul';
+import { TableauComponent } from './components/tableau/tableau';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -17,4 +18,5 @@ export const routes: Routes = [
     { path: 'subject', component: SubjectComponent },
     { path: 'computed', component: ComputedComponent },
     { path: 'calcul/:op', component: CalculComponent },
+    { path: 'tableau/:indice', component: TableauComponent },
 ];
