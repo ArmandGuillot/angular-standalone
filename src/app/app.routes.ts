@@ -10,6 +10,7 @@ import { CalculComponent } from './components/calcul/calcul';
 import { TableauComponent } from './components/tableau/tableau';
 import { NotFoundComponent } from './components/not-found/not-found';
 import { FormulaireSimpleComponent } from './components/formulaire-simple/formulaire-simple';
+import { CalculetteComponent } from './components/calculette/calculette';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -23,6 +24,7 @@ export const routes: Routes = [
     { path: 'calcul/:op', component: CalculComponent },
     { path: 'tableau/:indice', component: TableauComponent },
     { path: 'formulaire', component: FormulaireSimpleComponent },
+    { path: 'calculette', component: CalculetteComponent },
     //à placer en dernier
     // { path: '**', component: NotFoundComponent },
     { path: 'not-found', component: NotFoundComponent },
