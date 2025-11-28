@@ -10,22 +10,22 @@
     </div>
     <div class="row">
         <div class="col-3">
-            <button class="btn" [disabled]="form.invalid" (click)="calculer('+')">
+            <button class="btn" [disabled]="form.invalid" (click)="calculer($event)">
                 +
             </button>
         </div>
         <div class="col-3">
-            <button class="btn" [disabled]="form.invalid" (click)="calculer('-')">
+            <button class="btn" [disabled]="form.invalid" (click)="calculer($event)">
                 -
             </button>
         </div>
         <div class="col-3">
-            <button class="btn" [disabled]="form.invalid" (click)="calculer('*')">
+            <button class="btn" [disabled]="form.invalid" (click)="calculer($event)">
                 *
             </button>
         </div>
         <div class="col-3">
-            <button class="btn" [disabled]="form.invalid" (click)="calculer('/')">
+            <button class="btn" [disabled]="form.invalid" (click)="calculer($event)">
                 /
             </button>
         </div>

@@ -13,8 +13,13 @@ export class CalculetteComponent {
   resultat: number | null = null
   erreur: string | null = null
   operateur = ''
-  calculer(op: string) {
-    this.operateur = op
+  calculer(event: Event) {
+
+
+    const op = (event.target as HTMLButtonElement).innerHTML.trim()
+    console.log(op);
+
+    this.operateur = op 
     this.resultat = null
     this.erreur = null
     if (this.valeur1 != null && !isNaN(this.valeur1) && this.valeur2 != null && !isNaN(this.valeur2)) {
