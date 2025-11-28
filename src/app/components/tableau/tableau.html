@@ -3,7 +3,14 @@
 </h2>
 <p>{{ numbers }}</p>
 <p>
+    <button (click)="goToPrevious()"  class="btn">
+        <i class="fa-solid fa-angle-left"></i>
+    </button>
     <a [routerLink]="['/tableau', previous]">Précédent</a>
     {{ numbers[indice] }}
     <a [routerLink]="['/tableau', next]">Suivant</a>
+    <button (click)="goToNext()" class="btn">
+        <i class="fa-solid fa-angle-right"></i>
+    </button>
+
 </p>

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import Stagiaire from '../../classes/stagiaire';
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-about',
@@ -33,6 +33,7 @@ export class AboutComponent {
   lastname = "Mitroglou";
   ville = "Toulouse";
   codePostal = "31000";
+  constructor(private router: Router) {}
   // méthodes
   afficherBonjour() {
     return "Bonjour"
@@ -49,5 +50,21 @@ export class AboutComponent {
 
     // le contenu de l'élément HTML input
     console.log((event.target as HTMLInputElement).value);
+  }
+  goToStagiaire() {
+    //this.router.navigateByUrl('/stagiaire/Clinton/Bill')
+    this.router.navigate(['/stagiaire', this.lastname, this.firstname])
+  }
+  goToAdresse() {
+    //this.router.navigateByUrl('/stagiaire/Clinton/Bill')
+    this.router.navigate(
+      ['/adresse'],
+      {
+        queryParams: {
+          cp: this.codePostal,
+          ville: this.ville
+        }
+      }
+    )
   }
 }
