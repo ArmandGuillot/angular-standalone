@@ -1,22 +1,25 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Personne } from '../../models/personne';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-formulaire-simple',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './formulaire-simple.html',
   styleUrl: './formulaire-simple.css',
 })
 export class FormulaireSimpleComponent {
-  personne: Personne = {}
+  personne: Personne = { nom: '', prenom: '', age: 0 }
   personnes: Personne[] = []
-
   afficher(form: NgForm) {
-    console.log(this.personne);
     this.personnes.push({ ...this.personne })
-    this.personne = {}
+    // this.personnes.push(form.value)
+    // console.log(this.personne);
+    // console.log(form.value);
     form.reset()
+    // afficher les personnes ajoutées dans une liste HTML
+    // en dessous du formulaire 
   }
 }
 
