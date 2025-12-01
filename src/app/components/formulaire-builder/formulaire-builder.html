@@ -47,6 +47,20 @@
             } -->
         </div>
     </div>
+    <div formArrayName="sports">
+        <h3>Sports</h3>
+        <div>
+            <button (click)="ajouterSport()" type="button">
+                Ajouter un sport
+            </button>
+        </div>
+        @for (sport of sports.controls; track $index) {
+        <div>
+            <label [for]=`sport${$index}`>Sport {{ $index + 1 }} :</label>
+            <input type="text" [formControlName]="$index" [id]=`sport${$index}`>
+        </div>
+        }
+    </div>
 
     <div>
         <button [disabled]="personneForm.invalid">
