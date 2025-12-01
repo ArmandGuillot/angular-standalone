@@ -54,10 +54,13 @@
                 Ajouter un sport
             </button>
         </div>
-        @for (sport of sports.controls; track $index) {
+        @for (sport of sports.controls; track sport) {
         <div>
             <label [for]=`sport${$index}`>Sport {{ $index + 1 }} :</label>
             <input type="text" [formControlName]="$index" [id]=`sport${$index}`>
+            <button type="button" (click)="supprimerSport($index)" class="btn">
+                <i class="fa-solid fa-trash-can text-danger"></i>
+            </button>
         </div>
         }
     </div>

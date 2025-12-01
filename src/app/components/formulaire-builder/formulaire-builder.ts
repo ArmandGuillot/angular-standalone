@@ -52,4 +52,9 @@ export class FormulaireBuilderComponent {
     this.sports.push(this.fb.control(''))
     // this.sports.push([''])
   }
+  supprimerSport(i: number) {
+    console.log(i);
+    
+    this.sports.removeAt(i);
+  }
 }
