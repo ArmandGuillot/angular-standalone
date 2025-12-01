@@ -1,4 +1,4 @@
-import { Component, EventEmitter, input, Output } from '@angular/core';
+import { Component, EventEmitter, input, output, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -10,7 +10,8 @@ import { FormsModule } from '@angular/forms';
 export class ChildComponent {
   nom = input<string>()
   note = 0
-  @Output() sendNote = new EventEmitter<number>()
+  // @Output() sendNote = new EventEmitter<number>()
+  sendNote = output<number>()
   isDisabled= false
   envoyer() {
     this.sendNote.emit(this.note)
