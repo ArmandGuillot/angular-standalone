@@ -14,6 +14,7 @@ import { CalculetteComponent } from './components/calculette/calculette';
 import { FormulaireReactifComponent } from './components/formulaire-reactif/formulaire-reactif';
 import { FormulaireBuilderComponent } from './components/formulaire-builder/formulaire-builder';
 import { CommentComponent } from './components/comment/comment';
+import { FormulaireSignalComponent } from './components/formulaire-signal/formulaire-signal';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -31,6 +32,7 @@ export const routes: Routes = [
     { path: 'builder', component: FormulaireBuilderComponent },
     { path: 'comment', component: CommentComponent },
     { path: 'calculette', component: CalculetteComponent },
+    { path: 'signal-form', component: FormulaireSignalComponent },
     //à placer en dernier
     // { path: '**', component: NotFoundComponent },
     { path: 'not-found', component: NotFoundComponent },
