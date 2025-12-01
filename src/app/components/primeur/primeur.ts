@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './primeur.css',
 })
 export class PrimeurComponent {
+  total = 0
   produit: Produit = { nom: '', prix: 0, quantite: 0 }
   produits: Produit[] = [
     { nom: "banane", prix: 3, quantite: 10 },
@@ -19,5 +20,10 @@ export class PrimeurComponent {
   ajouterProduit() {
     this.produits.push(this.produit)
     this.produit = { nom: '', prix: 0, quantite: 0 }
+  }
+  calculerTotal(qteCommandee: number, index: number) {
+   
+    this.total += qteCommandee * this.produits[index].prix
+    this.produits[index].quantite -= qteCommandee
   }
 }
