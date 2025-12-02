@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, viewChild, ViewChild } from '@angular/core';
 import { FilsComponent } from '../fils/fils';
 
 @Component({
@@ -8,12 +8,13 @@ import { FilsComponent } from '../fils/fils';
   styleUrl: './pere.css',
 })
 export class PereComponent {
-  @ViewChild(FilsComponent) fils!: FilsComponent
+  // @ViewChild(FilsComponent) fils!: FilsComponent
+  fils = viewChild(FilsComponent)
   nom = 'John Wick'
   maVille = 'Marseille'
 
   premierEnfant() {
-    console.log(this.fils);
-    console.log(this.fils.ville());
+    console.log(this.fils());
+    console.log(this.fils()?.ville());
   }
 }
