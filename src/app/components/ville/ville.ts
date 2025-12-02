@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, model, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -8,10 +8,5 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './ville.css',
 })
 export class VilleComponent {
-  @Input() ville = ''
-  @Output() villeChange = new EventEmitter<string>()
-  sendVille() {
-    this.villeChange.emit(this.ville)
-  }
-
+  ville = model<string>()
 }
