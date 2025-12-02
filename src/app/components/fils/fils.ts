@@ -9,6 +9,6 @@ import { Component, input, Input } from '@angular/core';
 export class FilsComponent {
   // @Input({ required: true }) ville = 'Paris'
   // @Input() ville = 'Paris'
-  ville = input<string>('')
+  ville = input<string>('Lille')
   // ville = input.required<string>()
 }
