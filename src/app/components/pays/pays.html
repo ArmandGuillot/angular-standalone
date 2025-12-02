@@ -1,14 +1,11 @@
-<table>
-    <th>
-        Villes
-    </th>
-    @for (v of villes; track $index) {
-        <tr>
-            {{ v }}
-        </tr>
+<h2 class="text-primary my-5">Pays - ville</h2>
+<div>
+    @for(elt of villes; track elt; let i = $index) {
+    {{ elt }}
     }
-</table>
-
-@for (v of villes; track $index) {
-    <app-ville [ville]="v" (sendUpdate)="updateVilles($event, $index)" />
-}
+</div>
+<div>
+    @for(elt of villes; track elt; let i = $index) {
+    <app-ville [(ville)]="villes[i]"  />
+    }
+</div>

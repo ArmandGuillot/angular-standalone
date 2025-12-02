@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { VilleComponent } from "../ville/ville";
+import { VilleComponent } from '../ville/ville';
 
 @Component({
   selector: 'app-pays',
@@ -9,8 +9,4 @@ import { VilleComponent } from "../ville/ville";
 })
 export class PaysComponent {
   villes = ['Marseille', 'Lyon', 'Paris']
-
-  updateVilles(ville: string, index: number) {
-    this.villes[index] = ville
-  }
 }
