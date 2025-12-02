@@ -1,0 +1,14 @@
+<table>
+    <th>
+        Villes
+    </th>
+    @for (v of villes; track $index) {
+        <tr>
+            {{ v }}
+        </tr>
+    }
+</table>
+
+@for (v of villes; track $index) {
+    <app-ville [ville]="v" (sendUpdate)="updateVilles($event, $index)" />
+}

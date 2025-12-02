@@ -11,11 +11,11 @@ import { FormsModule } from '@angular/forms';
 export class ProduitComponent {
   produit = input.required<Produit>()
   qteCommandee: number = 0
-  onSendQuantity = output<number>()
+  onSendQuantity = output<void>()
   isDisabled = false
   ajouterPanier() {
     if (this.qteCommandee > 0 && this.qteCommandee <= this.produit().quantite) {
-      this.onSendQuantity.emit(this.qteCommandee)
+      this.onSendQuantity.emit()
       this.isDisabled = true
     } else {
       alert("Merci de modifier la quantité")

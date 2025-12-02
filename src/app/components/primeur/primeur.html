@@ -11,6 +11,6 @@
 
 <ul>
     @for (p of produits; track $index) {
-    <app-produit [produit]="p" (onSendQuantity)="calculerTotal($event, $index)"/>
+    <app-produit [produit]="p" (onSendQuantity)="calculerTotal($index)"/>
     }
 </ul>
