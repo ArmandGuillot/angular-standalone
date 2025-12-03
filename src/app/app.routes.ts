@@ -24,6 +24,7 @@ import { PaysComponent } from './components/interaction-module/pays/pays';
 import { ContainerComponent } from './components/interaction-module/container/container';
 import { TchatComponent } from './components/interaction-module/tchat/tchat';
 import { PersonneDetailsComponent } from './components/personne-module/personne-details/personne-details';
+import { AuthComponent } from './components/auth/auth';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -51,6 +52,7 @@ export const routes: Routes = [
     { path: 'pays', component: PaysComponent },
     { path: 'container', component: ContainerComponent },
     { path: 'tchat', component: TchatComponent },
+    { path: 'auth', component: AuthComponent },
     //à placer en dernier
     // { path: '**', component: NotFoundComponent },
     { path: 'not-found', component: NotFoundComponent },
