@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Personne } from '../models/personne';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PersonneService {
-
+  private url = `http://localhost:8080/ws/personnes`
   private personnes: Personne[]
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.personnes = [
       { id: 1, nom: "Wick", prenom: "John", age: 45 },
       { id: 2, nom: "Dalton", prenom: "Jack", age: 55 },
@@ -17,14 +19,23 @@ export class PersonneService {
     ]
   }
 
-  findAll() {
-    return this.personnes
+  findAll(): Observable<Personne[]> {
+    return this.http.get<Personne[]>(this.url)
+  }
+  findById(id: number): Observable<Personne> {
+    return this.http.get<Personne>(`${this.url}/${id}`)
   }
 
-  save(p: Personne) {
-    this.personnes.push(p)
+  save(p: Personne): Observable<Personne> {
+    return this.http.post<Personne>(this.url, p)
   }
-  remove(ind: number) {
-    this.personnes.splice(ind, 1)
+  update(id: number, p: Personne): Observable<Personne> {
+    return this.http.put<Personne>(`${this.url}/${id}`, p)
+  }
+  remove(id: number) {
+    // `http://localhost:8080/ws/personnes/1`
+    // `http://localhost:8080/ws/personnes/2`
+    // this.personnes.splice(ind, 1)
+    return this.http.delete<void>(`${this.url}/${id}`)
   }
 }
