@@ -1,4 +1,4 @@
-import { Component, input,  OnInit, signal } from '@angular/core';
+import { Component, input, OnInit, signal, viewChild, ViewChild } from '@angular/core';
 import { PersonneService } from '../../services/personne';
 import { Personne } from '../../models/personne';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +16,7 @@ export class PersonneDetailsComponent implements OnInit {
   id = input.required<number>()
   personne = signal<Personne>({ nom: '', prenom: '', age: 0 })
 
+  personneForm = viewChild.required(PersonneFormComponent)
   constructor(
     private personneService: PersonneService,
     private router: Router
@@ -30,8 +31,8 @@ export class PersonneDetailsComponent implements OnInit {
     })
   }
 
-  enregistrer(p:Personne) {
-    this.personneService.update(this.id(), p).subscribe(() => {
+  enregistrer() {
+    this.personneService.update(this.id(), this.personneForm().personne()).subscribe(() => {
       this.router.navigateByUrl('/personne')
     })
 
