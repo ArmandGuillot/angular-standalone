@@ -3,10 +3,11 @@ import { PersonneService } from '../../services/personne';
 import { Personne } from '../../models/personne';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PersonneFormComponent } from '../personne-form/personne-form';
 
 @Component({
   selector: 'app-personne-details',
-  imports: [FormsModule],
+  imports: [FormsModule, PersonneFormComponent],
   templateUrl: './personne-details.html',
   styleUrl: './personne-details.css',
 })
@@ -29,8 +30,8 @@ export class PersonneDetailsComponent implements OnInit {
     })
   }
 
-  enregistrer() {
-    this.personneService.update(this.id(), this.personne()).subscribe(() => {
+  enregistrer(p:Personne) {
+    this.personneService.update(this.id(), p).subscribe(() => {
       this.router.navigateByUrl('/personne')
     })
 

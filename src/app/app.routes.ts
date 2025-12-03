@@ -43,6 +43,7 @@ export const routes: Routes = [
     { path: 'calculette', component: CalculetteComponent },
     { path: 'signal-form', component: FormulaireSignalComponent },
     { path: 'personne', component: PersonneComponent },
+    { path: 'personne/:id', component: PersonneDetailsComponent },
     { path: 'pere', component: PereComponent },
     { path: 'primeur', component: PrimeurComponent },
     { path: 'parent', component: ParentComponent },
@@ -50,7 +51,6 @@ export const routes: Routes = [
     { path: 'pays', component: PaysComponent },
     { path: 'container', component: ContainerComponent },
     { path: 'tchat', component: TchatComponent },
-    { path: 'personne/:id', component: PersonneDetailsComponent },
     //à placer en dernier
     // { path: '**', component: NotFoundComponent },
     { path: 'not-found', component: NotFoundComponent },
