@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { Personne } from '../../models/personne';
+import { Personne } from '../../../models/personne';
 import { form, Field } from '@angular/forms/signals';
 import { FormsModule } from '@angular/forms';
 

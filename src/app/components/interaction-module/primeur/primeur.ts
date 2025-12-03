@@ -1,5 +1,5 @@
 import { Component, viewChildren } from '@angular/core';
-import { Produit } from '../../models/produit';
+import { Produit } from '../../../models/produit';
 import { ProduitComponent } from "../produit/produit";
 import { FormsModule } from '@angular/forms';
 

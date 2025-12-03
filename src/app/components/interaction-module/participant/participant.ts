@@ -1,6 +1,6 @@
 import { Component, input, OnInit } from '@angular/core';
-import { NotificationService } from '../../services/notification';
-import { Message } from '../../models/message';
+import { NotificationService } from '../../../services/notification';
+import { Message } from '../../../models/message';
 import { FormsModule } from '@angular/forms';
 
 @Component({

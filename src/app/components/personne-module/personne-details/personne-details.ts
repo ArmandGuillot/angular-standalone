@@ -1,6 +1,6 @@
 import { Component, input, OnInit, signal, viewChild, ViewChild } from '@angular/core';
-import { PersonneService } from '../../services/personne';
-import { Personne } from '../../models/personne';
+import { PersonneService } from '../../../services/personne';
+import { Personne } from '../../../models/personne';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PersonneFormComponent } from '../personne-form/personne-form';

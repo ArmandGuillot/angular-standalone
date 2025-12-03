@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Personne } from '../../models/personne';
-import { checkNomValidator } from '../../validators/string.validator';
+import { Personne } from '../../../models/personne';
+import { checkNomValidator } from '../../../validators/string.validator';
 
 @Component({
   selector: 'app-formulaire-builder',
