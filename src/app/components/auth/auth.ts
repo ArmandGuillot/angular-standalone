@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { User } from '../../models/user';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-auth',
@@ -11,21 +12,28 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent {
   erreur = signal<string | null>(null)
-  user: User = { username: '', password: '' }
-  users: User[] = [
-    { username: 'user', password: 'user' },
-    { username: 'admin', password: 'admin' },
-    { username: 'sadmin', password: 'sadmin' },
-  ]
-  constructor(private router: Router) { }
-  seConnecter() {
-    if (this.users.some(u => u.password == this.user.password && u.username == this.user.username)) {
-      localStorage.setItem('user', JSON.stringify(this.user))
-      this.router.navigateByUrl('/personne')
+  user: User = { username: '', password: '', grantType: 'PASSWORD' }
 
-    } else {
-      this.erreur.set("Identifiants incorrects")
-    }
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) { }
+
+  seConnecter() {
+    this.authService.findByUsernameAndPassword(this.user).subscribe({
+      next: (res) => {
+        console.log(res);
+        localStorage.setItem('tokens', JSON.stringify(res))
+        localStorage.setItem('user', JSON.stringify(this.user))
+        this.router.navigateByUrl('/personne')
+
+      },
+      error: (err) => {
+        console.log(err);
+        this.erreur.set("Identifiants incorrects")
+      }
+    })
+
   }
 
 
