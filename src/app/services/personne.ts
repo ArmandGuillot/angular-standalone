@@ -2,26 +2,22 @@ import { Injectable } from '@angular/core';
 import { Personne } from '../models/personne';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PersonneService {
-  private url = `http://localhost:8080/ws/personnes`
-  private personnes: Personne[]
+  private url: string
 
-  constructor(private http: HttpClient) {
-    this.personnes = [
-      { id: 1, nom: "Wick", prenom: "John", age: 45 },
-      { id: 2, nom: "Dalton", prenom: "Jack", age: 55 },
-      { id: 3, nom: "Maggio", prenom: "Candice", age: 27 },
-      { id: 4, nom: "Linus", prenom: "Sophie", age: 67 },
-    ]
-  }
+  constructor(private http: HttpClient) { 
+    this.url = environment.BACKEND_URL + '/personnes'
+   }
 
   findAll(): Observable<Personne[]> {
     return this.http.get<Personne[]>(this.url)
   }
+
   findById(id: number): Observable<Personne> {
     return this.http.get<Personne>(`${this.url}/${id}`)
   }
@@ -29,13 +25,12 @@ export class PersonneService {
   save(p: Personne): Observable<Personne> {
     return this.http.post<Personne>(this.url, p)
   }
+
   update(id: number, p: Personne): Observable<Personne> {
     return this.http.put<Personne>(`${this.url}/${id}`, p)
   }
+
   remove(id: number) {
-    // `http://localhost:8080/ws/personnes/1`
-    // `http://localhost:8080/ws/personnes/2`
-    // this.personnes.splice(ind, 1)
     return this.http.delete<void>(`${this.url}/${id}`)
   }
 }
