@@ -25,6 +25,7 @@ import { ContainerComponent } from './components/interaction-module/container/co
 import { TchatComponent } from './components/interaction-module/tchat/tchat';
 import { PersonneDetailsComponent } from './components/personne-module/personne-details/personne-details';
 import { AuthComponent } from './components/auth/auth';
+import { authGuard } from './guards/auth-guard';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -43,8 +44,8 @@ export const routes: Routes = [
     { path: 'comment', component: CommentComponent },
     { path: 'calculette', component: CalculetteComponent },
     { path: 'signal-form', component: FormulaireSignalComponent },
-    { path: 'personne', component: PersonneComponent },
-    { path: 'personne/:id', component: PersonneDetailsComponent },
+    { path: 'personne', component: PersonneComponent, canActivate: [authGuard] },
+    { path: 'personne/:id', component: PersonneDetailsComponent, canActivate: [authGuard] },
     { path: 'pere', component: PereComponent },
     { path: 'primeur', component: PrimeurComponent },
     { path: 'parent', component: ParentComponent },

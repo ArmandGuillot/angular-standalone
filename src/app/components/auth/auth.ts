@@ -20,7 +20,8 @@ export class AuthComponent {
   constructor(private router: Router) { }
   seConnecter() {
     if (this.users.some(u => u.password == this.user.password && u.username == this.user.username)) {
-      this.router.navigateByUrl('/primeur')
+      localStorage.setItem('user', JSON.stringify(this.user))
+      this.router.navigateByUrl('/personne')
 
     } else {
       this.erreur.set("Identifiants incorrects")
