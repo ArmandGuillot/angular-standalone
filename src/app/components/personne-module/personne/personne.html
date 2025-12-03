@@ -1,11 +1,8 @@
 <h2 class="text-primary my-5">Gestion de personnes</h2>
 <h3 class="text-primary my-5">Ajouter une nouvelle personne</h3>
-<app-personne-form 
-    [(personne)]="personne" 
-    label="Ajouter" 
-    (onSubmit)="ajouter()"
-/>
+<app-personne-form [(personne)]="personne" label="Ajouter" (onSubmit)="ajouter()" />
 <h3 class="text-primary my-5">Liste des personnes</h3>
+@if(!erreur()) {
 <ul>
     @for (p of personnes(); track $index) {
     <li>
@@ -18,5 +15,12 @@
         </a>
 
     </li>
+    } @empty {
+    <li class="erreur">La liste est vide.</li>
     }
 </ul>
+} @else {
+<p class="erreur text-danger">
+   <i class="fa-solid fa-ban"></i> {{ erreur()}}<i class="fa-solid fa-ban"></i>
+</p>
+}

@@ -13,23 +13,39 @@ import { PersonneFormComponent } from '../personne-form/personne-form';
 })
 export class PersonneComponent implements OnInit {
   personnes = signal<Personne[]>([])
+  erreur = signal<string | null>(null)
   personne: Personne = { nom: '', prenom: '', age: 0 }
 
   // constructor(private ps: PersonneService) { }
   ps = inject(PersonneService)
   ngOnInit(): void {
-    this.ps.findAll().subscribe(res => {
-      console.log(res);
+    this.ps.findAll().subscribe({
+      next: res => {
+        console.log(res);
 
-      this.personnes.set(res)
+        this.personnes.set(res)
+      },
+      error: (err) => {
+        this.erreur.set("Problème de recupération de données")
+        console.log(err);
+
+      }
     })
   }
 
   ajouter() {
-    this.ps.save(this.personne).subscribe(p => {
-      this.personnes.set([...this.personnes(), p])
+    this.ps.save(this.personne).subscribe({
+      next: p => {
+        this.personnes.set([...this.personnes(), p])
+        this.personne = { nom: '', prenom: '', age: 0 }
+      },
+      error: (err) => {
+        this.erreur.set("Insertion impossible")
+        console.log(err);
+
+      }
     })
-    this.personne = { nom: '', prenom: '', age: 0 }
+
   }
   supprimer(id: number | undefined = 0) {
     this.ps.remove(id).subscribe(() => {
