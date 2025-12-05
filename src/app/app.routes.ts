@@ -26,6 +26,7 @@ import { TchatComponent } from './components/interaction-module/tchat/tchat';
 import { PersonneDetailsComponent } from './components/personne-module/personne-details/personne-details';
 import { AuthComponent } from './components/auth/auth';
 import { authGuard } from './guards/auth-guard';
+import { CompteurComponent } from './components/interaction-module/compteur/compteur';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
