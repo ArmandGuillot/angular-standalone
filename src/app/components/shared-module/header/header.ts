@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginLogoutService } from '../../../services/login-logout';
 
 @Component({
   selector: 'app-header',
@@ -8,4 +10,21 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   title = 'angular-standalone';
+  isConnected = signal(!!localStorage.getItem('tokens'))
+  constructor(
+    private router: Router,
+    private logService: LoginLogoutService
+  ) {
+    this.logService.getSubject().subscribe(v => this.isConnected.set(v))
+  }
+
+  login() {
+    this.router.navigateByUrl('/auth')
+  }
+  logout() {
+    localStorage.removeItem('tokens')
+    localStorage.removeItem('user')
+    this.logService.isConnected(false)
+    this.router.navigateByUrl('/')
+  }
 }

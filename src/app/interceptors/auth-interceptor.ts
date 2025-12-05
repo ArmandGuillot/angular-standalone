@@ -31,7 +31,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
     return next(cloned)
   }
 
-  // Jeotn expiré
+  // Jeton expiré
   return authService.getTokensUsingRefreshToken({
     grantType: "REFRESH_TOKEN",
     refreshToken: tokens.refreshToken
