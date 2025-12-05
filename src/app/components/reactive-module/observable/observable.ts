@@ -1,5 +1,5 @@
-import { Component, OnInit, signal } from '@angular/core';
-import { interval, Observable, Observer, take } from 'rxjs';
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
+import { filter, interval, map, Observable, Observer, Subscription, take } from 'rxjs';
 
 @Component({
   selector: 'app-observable',
@@ -7,15 +7,21 @@ import { interval, Observable, Observer, take } from 'rxjs';
   templateUrl: './observable.html',
   styleUrl: './observable.css',
 })
-export class ObservableComponent implements OnInit {
+export class ObservableComponent implements OnInit, OnDestroy {
+  subscripition: Subscription | null = null
 
   valeurs = signal<number[]>([]);
   state = signal<string>('');
   ngOnInit(): void {
     const observable$: Observable<number> = interval(1000)
-      .pipe(take(10))
+      .pipe(
+        take(10),
+        filter(v => v % 2 == 0),
+        map(v => v * 2)
 
-    observable$.subscribe({
+      )
+
+    this.subscripition = observable$.subscribe({
       next: (v) => this.valeurs.update(arr => [...arr, v]),
       error: (err) => this.state.set(err),
       complete: () => this.state.set('Fin'),
@@ -26,5 +32,8 @@ export class ObservableComponent implements OnInit {
     //   complete: () => this.state.set('Fin'),
     // }
     // observable$.subscribe(observer)
+  }
+  ngOnDestroy(): void {
+    this.subscripition?.unsubscribe()
   }
 }
