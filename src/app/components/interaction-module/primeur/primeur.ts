@@ -23,8 +23,10 @@ export class PrimeurComponent {
     this.produit = { nom: '', prix: 0, quantite: 0 }
   }
   calculerTotal(index: number) {
+    console.log(index);
+    
     const qteCommandee = this.produitsComponents().at(index)?.qteCommandee as number
     this.total += qteCommandee * this.produits[index].prix
-    this.produits[index].quantite -= qteCommandee
+    // this.produits[index].quantite -= qteCommandee
   }
 }

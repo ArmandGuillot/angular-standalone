@@ -57,5 +57,12 @@
         <li routerLinkActive="active">
             <a routerLink="/tchat">Tchat</a>
         </li>
+        <li routerLinkActive="active">
+            <a routerLink="/panier">
+                Panier :
+                Nombre de produits = {{ nombreProduit$ | async}},
+                Quantité totale = {{ quantiteTotale$ | async}}
+            </a>
+        </li>
     </ul>
 </nav>

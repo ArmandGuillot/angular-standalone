@@ -27,6 +27,7 @@ import { PersonneDetailsComponent } from './components/personne-module/personne-
 import { AuthComponent } from './components/auth/auth';
 import { authGuard } from './guards/auth-guard';
 import { CompteurComponent } from './components/interaction-module/compteur/compteur';
+import { PanierComponent } from './components/interaction-module/panier/panier';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -55,6 +56,7 @@ export const routes: Routes = [
     { path: 'container', component: ContainerComponent },
     { path: 'tchat', component: TchatComponent },
     { path: 'auth', component: AuthComponent },
+    { path: 'panier', component: PanierComponent },
     //à placer en dernier
     // { path: '**', component: NotFoundComponent },
     { path: 'not-found', component: NotFoundComponent },
